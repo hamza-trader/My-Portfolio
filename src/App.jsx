@@ -267,7 +267,7 @@ export default function App() {
             <motion.h1 variants={childVariants} className="text-6xl md:text-8xl font-bold mb-6 tracking-tighter leading-[1.1] text-brand-primary dark:text-dark-primary transition-colors duration-500">
               Hi I'm Ehab Sikandar <br className="hidden md:block"/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-secondary to-brand-primary dark:from-dark-secondary dark:to-dark-primary">
-                Data Scientist.
+                Data Scientist | Analytics
               </span>
             </motion.h1>
 
@@ -322,7 +322,7 @@ export default function App() {
                 I am passionate about transforming datasets into intelligence.
               </p>
               <p>
-                With expertise spanning advanced analytics, traditional machine learning, and deep learning architecture, I build solutions that solve real-world problems. Whether engineering predictive models, developing LLM-powered applications, or extracting strategic insights from unstructured data, I work at the intersection of technical innovation and business strategy.
+                With expertise spanning advanced analytics, traditional machine learning, and deep learning architecture, I solve real-world problems. Whether engineering predictive models, developing LLM-powered applications, or extracting strategic insights from data, I work at the intersection of technical innovation and business strategy.
               </p>
               <p className="text-brand-primary dark:text-dark-primary font-medium transition-colors duration-500">
                 My core objective is to build intelligent systems that empower organizations to make precision, data-driven decisions.
