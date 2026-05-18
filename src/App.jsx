@@ -272,7 +272,7 @@ export default function App() {
             </motion.h1>
 
             <motion.p variants={childVariants} className="text-lg md:text-xl text-brand-accent dark:text-dark-accent max-w-2xl mx-auto mb-10 leading-relaxed font-light transition-colors duration-500">
-              Bridging the gap between complex raw data and scalable AI solutions. I build sophisticated machine learning systems that drive measurable strategic impact.
+              Bridging the gap between complex raw data and AI solutions. I build machine learning systems that drive measurable strategic impact.
             </motion.p>
 
             <motion.div variants={childVariants} className="flex flex-wrap justify-center gap-4">
@@ -319,13 +319,13 @@ export default function App() {
 
             <div className="space-y-6 text-xl text-brand-accent dark:text-dark-accent leading-relaxed font-light transition-colors duration-500 pl-16 max-w-4xl">
               <p>
-                I am a versatile Data Scientist and AI/ML Engineer passionate about transforming datasets into intelligence.
+                I am passionate about transforming datasets into intelligence.
               </p>
               <p>
-                With specialized expertise spanning advanced analytics, traditional machine learning, and modern deep learning architecture, I build end-to-end solutions that solve real-world problems. Whether engineering predictive models, developing LLM-powered applications, or extracting strategic insights from unstructured data, I thrive at the intersection of technical innovation and overarching business strategy.
+                With expertise spanning advanced analytics, traditional machine learning, and deep learning architecture, I build solutions that solve real-world problems. Whether engineering predictive models, developing LLM-powered applications, or extracting strategic insights from unstructured data, I work at the intersection of technical innovation and business strategy.
               </p>
               <p className="text-brand-primary dark:text-dark-primary font-medium transition-colors duration-500">
-                My core objective is to architect robust, scalable intelligent systems that empower organizations to make precision, data-driven decisions.
+                My core objective is to build intelligent systems that empower organizations to make precision, data-driven decisions.
               </p>
             </div>
           </motion.div>
@@ -359,14 +359,14 @@ export default function App() {
                   <h3 className="font-bold text-2xl text-brand-primary dark:text-dark-primary mb-1 transition-colors duration-500">AI Research Assistant</h3>
                   <p className="text-brand-primary dark:text-dark-primary font-medium mb-6 transition-colors duration-500">CodeBricks Global</p>
                    <ul className="space-y-3 text-brand-accent dark:text-dark-accent text-base font-light leading-relaxed list-disc list-inside marker:text-brand-secondary/50 dark:marker:text-dark-secondary/70 transition-colors duration-500">
-                    <li>Conduct survey analytics on consumer research datasets to extract actionable insights on product preferences, flavor trends, and category performance.</li>
+                    <li>Conducted survey analytics on consumer research datasets to extract actionable insights on product preferences, flavor trends, and category performance.</li>
                     <li>Supported end-to-end survey analytics projects, handling data cleaning, preprocessing, analysis.</li>
-                    <li>Perform statistical analysis and multivariate techniques (including PLSR, PCA, and Ideal Profiling) in R and Python to identify key drivers of liking and purchase intent, comparing results across tools for robustness.</li>
-                    <li>Build predictive models and Random Forest analyses to support business decision-making and highlight influential factors in consumer behavior.</li>
-                    <li>Automate survey data workflows, including preprocessing, cleaning, and structuring of numeric and free-text responses, improving efficiency and data reliability.</li>
-                    <li>Apply advanced Excel skills to handle large-scale datasets, including formulas, pivot tables, and validation checks for accurate reporting.</li>
-                    <li>Create charts and visualizations in Power BI, including scatter plots and PCA coordinate plots, to communicate survey trends and insights effectively.</li>
-                    <li>Utilize SPSS for additional statistical analysis and hypothesis testing as needed for survey data.</li>
+                    <li>Performed statistical analysis and multivariate techniques (including PLSR, PCA, and Ideal Profiling) in R and Python to identify key drivers of liking and purchase intent, comparing results across tools for robustness.</li>
+                    <li>Built predictive models and Random Forest analyses to support business decision-making and highlight influential factors in consumer behavior.</li>
+                    <li>Automated survey data workflows, including preprocessing, cleaning, and structuring of numeric and free-text responses, improving efficiency and data reliability.</li>
+                    <li>Applied advanced Excel skills to handle large-scale datasets, including formulas, pivot tables, and validation checks for accurate reporting.</li>
+                    <li>Created charts and visualizations in Power BI, including scatter plots and PCA coordinate plots, to communicate survey trends and insights effectively.</li>
+                    <li>Utilized SPSS for additional statistical analysis and hypothesis testing as needed for survey data.</li>
                   </ul>
                 </div>
               </motion.div>
@@ -628,8 +628,8 @@ export default function App() {
                 {/* Download Button - Bottom Right */}
                 <div className="absolute bottom-6 right-8">
                   <a
-                    href="/resume.pdf"
-                    download="Muhammad_Ehab_Sikandar_Resume.pdf"
+                    href="/Ehab's Resume.pdf"
+                    download="Muhammad Ehab Sikandar Resume.pdf"
                     className="flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-secondary dark:bg-dark-secondary text-white dark:text-dark-bg shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95 transition-all group"
                   >
                     <Download className="w-5 h-5" />
