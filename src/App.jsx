@@ -33,86 +33,86 @@ const childVariants = {
 
 const skillsData = [
   {
-    category: "Programming & Database",
+    category: "RPA & Automation",
     icon: <Code2 className="w-5 h-5 text-brand-secondary dark:text-dark-secondary" />,
-    skills: ["Python", "SQL", "R"]
+    skills: ["UiPath (Studio & Orchestrator)", "VB.NET", "Python Scripting", "JavaScript"]
   },
   {
-    category: "Machine Learning & AI",
+    category: "Web Development",
     icon: <BrainCircuit className="w-5 h-5 text-brand-secondary dark:text-dark-secondary" />,
-    skills: ["LLMs", "Deep Learning (RetinaNet)", "Random Forest", "Regression Modeling", "Sentiment Classification", "NLP", "OCR", "Feature Engineering", "Hyperparameter Tuning", "Data Augmentation"]
+    skills: ["React", "TypeScript (Vite)", "FastAPI", "PostgreSQL", "JWT Authentication", "Role-Based Access Control"]
   },
   {
-    category: "Statistical Analysis",
+    category: "Integration & APIs",
     icon: <LineChart className="w-5 h-5 text-brand-secondary dark:text-dark-secondary" />,
-    skills: ["Multivariate Analysis", "PCA", "PLSR", "Ideal Profiling", "Hypothesis Testing", "Statistical Modeling & Driver Analysis"]
+    skills: ["REST APIs", "Webhooks", "HubSpot", "Shopify", "Outlook & Email Automation", "Google Workspace"]
   },
   {
-    category: "Frameworks & Libraries",
+    category: "Data & Reporting",
     icon: <Package className="w-5 h-5 text-brand-secondary dark:text-dark-secondary" />,
-    skills: ["Scikit-learn", "PyTorch", "Transformers", "Bitsandbytes", "Flask"]
+    skills: ["Excel VBA Macros", "Excel & Google Sheets Automation", "Power BI", "Data Extraction & Web Scraping"]
   },
   {
-    category: "Visualization & Tools",
+    category: "Compliance Systems",
     icon: <Monitor className="w-5 h-5 text-brand-secondary dark:text-dark-secondary" />,
-    skills: ["Power BI", "SPSS", "Advanced Excel", "NVIDIA Omniverse", "COCO JSON"]
+    skills: ["Saudization / Nitaqat Frameworks", "Audit Logging", "Predictive Simulation", "Quota & Threshold Modeling"]
   },
   {
     category: "Professional Methodologies",
     icon: <Briefcase className="w-5 h-5 text-brand-secondary dark:text-dark-secondary" />,
-    skills: ["Survey Analytics", "Predictive Modeling", "Consumer Research", "Financial Data Analysis", "Data Preprocessing"]
+    skills: ["Process Documentation", "Client Requirement Gathering", "Exception Handling & Error Logging", "Schedule Management"]
   }
 ];
 
 const caseStudiesData = [
   {
-    title: "Consumer Preference Driver Analysis",
-    category: "Consumer Analytics",
-    description: "Identifying the key product attributes that drive consumer liking and purchase intent through advanced statistical modeling and predictive analytics.",
-    problem: "Consumer research datasets contained multiple sensory and behavioral attributes, but stakeholders lacked clarity on which product characteristics most strongly influenced consumer liking and purchase decisions.",
-    approach: "Developed analytical pipelines in Python and R to preprocess survey data and apply techniques such as PLSR, Random Forest, and correlation analysis. Evaluated attribute importance, quantified the impact of individual product features, and validated findings across statistical methods.",
-    outcome: "Revealed the most influential drivers of consumer preference and purchase intent, enabling stakeholders to prioritize product improvements based on data-backed consumer insights.",
-    tags: ["Python", "R", "PLSR", "Random Forest", "Excel", "Consumer Analytics"],
-    icon: <LineChart className="w-4 h-4 text-brand-accent dark:text-dark-accent" />
+    title: "Nitaqat Saudization Compliance Portal",
+    category: "Full Stack Compliance System",
+    description: "A full-stack web portal that helps Saudi Arabian companies track HR localization compliance, monitor profession-based quotas, and plan future hiring.",
+    problem: "The client's Saudization tracking was managed through a fragile Excel-based tool with no access control, no audit trail, and no way to model the impact of future hiring decisions across 14 profession categories and 5 nationality-based quotas.",
+    approach: "Built a React and TypeScript frontend with a Python FastAPI backend and PostgreSQL database. Designed role-based access (SuperAdmin, Admin, HR Manager) with JWT authentication, bcrypt password hashing, 90-day password expiry, and full audit logging of user activity.",
+    outcome: "Delivered a production-ready portal with a Nationality Tracker, profession-based Saudization tracker, and a two-way predictive simulator that calculates permissible expat hiring based on Saudi additions and vice versa, aligned with official MHRSD and Qiwa thresholds.",
+    tags: ["React", "TypeScript", "FastAPI", "PostgreSQL", "JWT Auth", "Nitaqat Compliance"],
+    icon: <Monitor className="w-4 h-4 text-brand-accent dark:text-dark-accent" />
   },
   {
-    title: "Ideal Profiling Analysis",
-    category: "Sensory Analytics",
-    description: "Determining the optimal sensory attribute ranges that maximize consumer liking by comparing perceived product characteristics against ideal consumer expectations.",
-    problem: "Product teams needed to understand how current sensory attributes differed from ideal consumer expectations in order to improve overall liking and product acceptance.",
-    approach: "Built an Ideal Profiling framework in Python and R to model relationships between sensory attributes and liking scores. Applied regression-based analysis to estimate ideal attribute levels and identify gaps between current and target sensory profiles.",
-    outcome: "Delivered actionable recommendations on optimal sensory attribute ranges, allowing teams to focus product reformulation efforts on the characteristics most likely to improve consumer satisfaction.",
-    tags: ["Python", "R", "Regression Analysis", "Ideal Profiling", "Sensory Analytics"],
-    icon: <BrainCircuit className="w-4 h-4 text-brand-accent dark:text-dark-accent" />
+    title: "Saudization Compliance Engine",
+    category: "Backend Engineering",
+    description: "The calculation core powering the Nitaqat portal — translating raw employee data into accurate compliance bands, quota gaps, and violation flags.",
+    problem: "Saudization compliance is calculated across multiple overlapping layers — company-wide, department, profession, and nationality quotas — each with different thresholds, special cases, and government rule updates.",
+    approach: "Migrated the data layer from SQLite to PostgreSQL using SQLAlchemy, fixed critical bugs in the Saudization formula, and added handling for GCC nationals, Ajeer workers, students, and other special-case categories with proper division-by-zero guards.",
+    outcome: "Produced a reliable compliance engine that correctly classifies companies into Nitaqat bands (Platinum to Red), flags profession-specific shortfalls, and stays aligned with the latest MHRSD and Qiwa rule changes.",
+    tags: ["Python", "FastAPI", "SQLAlchemy", "PostgreSQL", "Compliance Logic"],
+    icon: <Database className="w-4 h-4 text-brand-accent dark:text-dark-accent" />
   },
   {
-    title: "Consumer Segmentation & Preference Mapping",
-    category: "Segmentation Analysis",
-    description: "Using multivariate analysis to identify consumer preference segments and visualize product positioning within competitive categories.",
-    problem: "Consumer preference data showed varying patterns across respondents, making it difficult to identify meaningful audience segments and understand how products were positioned relative to competitors.",
-    approach: "Applied PCA and clustering techniques to reduce dimensionality and uncover consumer segments based on preference behavior. Generated visual preference maps to highlight relationships between consumer groups and product attributes.",
-    outcome: "Identified distinct consumer segments and provided clear product positioning insights, helping stakeholders align product strategies with target audience preferences.",
-    tags: ["Python", "R", "PCA", "Clustering", "Power BI", "Segmentation Analysis"],
-    icon: <LineChart className="w-4 h-4 text-brand-accent dark:text-dark-accent" />
-  },
-  {
-    title: "Survey Analytics Workflow Automation",
-    category: "Data Automation",
-    description: "Automating repetitive survey data cleaning, preprocessing, and reporting workflows to improve efficiency and ensure reliable analytics outputs.",
-    problem: "Manual handling of large survey datasets created bottlenecks in preprocessing, increased the likelihood of reporting errors, and slowed the delivery of actionable insights.",
-    approach: "Designed automated workflows in Python to clean, validate, and structure survey data for downstream analysis. Integrated preprocessing pipelines with Excel-based reporting and validation processes to streamline recurring analytics tasks.",
-    outcome: "Significantly reduced manual processing effort, improved consistency across survey analytics projects, and accelerated the turnaround time for delivering consumer insights.",
-    tags: ["Python", "Excel", "Data Automation", "Survey Analytics", "Data Validation"],
+    title: "Business Visa Risk Scoring Automation",
+    category: "Excel VBA Automation",
+    description: "A multi-module Excel VBA system that automates visa risk scoring and recommends the correct visa category based on job title and applicant profile.",
+    problem: "Visa risk assessment was a manual, repetitive process across five separate scoring modules, prone to inconsistency and slow turnaround for client-facing decisions.",
+    approach: "Built five interconnected VBA scoring modules covering job title lookups, risk scoring logic, and recommendation rules. Added input validation, descriptive in-line documentation, and a results summary message box for quick review.",
+    outcome: "Reduced manual scoring effort significantly and standardized recommendations across Business Visa, Assessment Required, and Temporary Work Permit categories, with file handling adapted for both local and OneDrive environments.",
+    tags: ["Excel VBA", "Process Automation", "Risk Scoring", "Client Operations"],
     icon: <Terminal className="w-4 h-4 text-brand-accent dark:text-dark-accent" />
   },
   {
-    title: "LibraBot",
+    title: "Enterprise RPA Workflow Suite",
+    category: "RPA Engineering",
+    description: "End-to-end RPA solutions automating sales, logistics, and finance operations across multiple enterprise platforms.",
+    problem: "Manual, repetitive workflows across HubSpot, Unleashed, Shopify, MachShip, and Google Workspace created bottlenecks and inconsistent data between systems.",
+    approach: "Designed and deployed UiPath bots integrated via REST APIs and webhooks for real-time synchronization. Automated email-driven workflows with Outlook integration for ticket creation, LLM-based categorization, and CRM updates.",
+    outcome: "Delivered scalable, maintainable automations with robust exception handling and Orchestrator scheduling, plus Power BI dashboards giving management live visibility into automation performance and KPIs.",
+    tags: ["UiPath", "VB.NET", "Python", "API Integration", "Power BI"],
+    icon: <BrainCircuit className="w-4 h-4 text-brand-accent dark:text-dark-accent" />
+  },
+  {
+    title: "University Admissions Virtual Assistant",
     category: "AI / ML Engineering",
-    description: "An entirely offline, intelligent virtual library assistant leveraging Local LLMs and NVIDIA Omniverse for hyper-realistic interaction.",
-    problem: "Traditional library systems lack intuitive, conversational interfaces. Cloud-based LLMs pose privacy concerns and latency issues for local institutional deployments.",
-    approach: "Engineered a completely offline solution utilizing Hugging Face Transformers. Integrated OCR for real-time image text extraction and utilized NVIDIA Audio2Face for lifelike avatar lip-syncing.",
-    outcome: "Successfully deployed a highly responsive, locally hosted Flask application that securely processes user NLP queries while providing an immersive, interactive 3D avatar experience.",
-    tags: ["Python", "PyTorch", "Transformers", "NLP", "Flask", "NVIDIA Omniverse", "OCR"],
+    description: "An intelligent virtual assistant for university admissions, combining retrieval-augmented generation with real-time speech and a 3D avatar.",
+    problem: "Prospective students needed a conversational, always-available way to get accurate answers about admissions without sifting through static university pages.",
+    approach: "Built a RAG pipeline with a vector database for context-based responses, integrated real-time speech interaction, and connected outputs to Nvidia Audio2Face for a lifelike avatar experience.",
+    outcome: "Delivered a working final year project demonstrating an end-to-end conversational system, combining Flask, Mistral 7B, and Nvidia Audio2Face into a single interactive experience.",
+    tags: ["Flask", "Mistral 7B", "RAG", "Nvidia Audio2Face", "HTML/CSS/Bootstrap"],
     icon: <BrainCircuit className="w-4 h-4 text-brand-accent dark:text-dark-accent" />
   }
 ];
@@ -194,7 +194,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
           <button onClick={() => scrollTo("home")} className="font-semibold text-xl tracking-tighter flex items-center gap-2 group">
             <Terminal className="w-5 h-5 text-brand-secondary dark:text-dark-secondary group-hover:text-brand-primary dark:group-hover:text-dark-primary transition-colors" />
-            <span className="text-brand-primary dark:text-dark-primary transition-colors">Ehab<span className="text-brand-secondary dark:text-dark-secondary transition-colors">.</span></span>
+            <span className="text-brand-primary dark:text-dark-primary transition-colors">Hamza<span className="text-brand-secondary dark:text-dark-secondary transition-colors">.</span></span>
           </button>
 
           <div className="flex items-center gap-4">
@@ -265,14 +265,14 @@ export default function App() {
             </motion.div>
             
             <motion.h1 variants={childVariants} className="text-6xl md:text-8xl font-bold mb-6 tracking-tighter leading-[1.1] text-brand-primary dark:text-dark-primary transition-colors duration-500">
-              Hi I'm Ehab Sikandar <br className="hidden md:block"/>
+              Hi I'm Hamza Bin Kashif <br className="hidden md:block"/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-secondary to-brand-primary dark:from-dark-secondary dark:to-dark-primary">
-                Data Scientist | Analytics
+                RPA Developer | Full Stack
               </span>
             </motion.h1>
 
             <motion.p variants={childVariants} className="text-lg md:text-xl text-brand-accent dark:text-dark-accent max-w-2xl mx-auto mb-10 leading-relaxed font-light transition-colors duration-500">
-              Bridging the gap between complex raw data and AI solutions. I build machine learning systems that drive measurable strategic impact.
+              Bridging the gap between repetitive workflows and intelligent systems. I build automation pipelines and full-stack platforms that turn manual processes into reliable, scalable solutions.
             </motion.p>
 
             <motion.div variants={childVariants} className="flex flex-wrap justify-center gap-4">
@@ -319,13 +319,13 @@ export default function App() {
 
             <div className="space-y-6 text-xl text-brand-accent dark:text-dark-accent leading-relaxed font-light transition-colors duration-500 pl-16 max-w-4xl">
               <p>
-                I am passionate about transforming datasets into intelligence.
+                I am passionate about turning manual processes into intelligent systems.
               </p>
               <p>
-                With expertise spanning advanced analytics, traditional machine learning, and deep learning architecture, I solve real-world problems. Whether engineering predictive models, developing LLM-powered applications, or extracting strategic insights from data, I work at the intersection of technical innovation and business strategy.
+                With expertise spanning RPA development, full-stack web applications, and API integrations, I build solutions that solve real operational problems. Whether automating end-to-end workflows in UiPath, building a compliance portal in React and FastAPI, or designing Excel-based decision tools, I work at the intersection of automation engineering and practical business needs.
               </p>
               <p className="text-brand-primary dark:text-dark-primary font-medium transition-colors duration-500">
-                My core objective is to build intelligent systems that empower organizations to make precision, data-driven decisions.
+                My core objective is to build reliable, maintainable systems that give organizations back their time and confidence in their data.
               </p>
             </div>
           </motion.div>
@@ -355,18 +355,15 @@ export default function App() {
                 </div>
                 
                 <div className="w-full glass-card p-8 group-hover:border-brand-secondary/30 dark:group-hover:border-dark-secondary/50 transition-colors">
-                   <p className="text-brand-secondary dark:text-dark-secondary font-mono text-base mb-2 transition-colors duration-500">Apr 2025 — Present</p>
-                  <h3 className="font-bold text-2xl text-brand-primary dark:text-dark-primary mb-1 transition-colors duration-500">AI Research Assistant</h3>
-                  <p className="text-brand-primary dark:text-dark-primary font-medium mb-6 transition-colors duration-500">CodeBricks Global</p>
+                   <p className="text-brand-secondary dark:text-dark-secondary font-mono text-base mb-2 transition-colors duration-500">Feb 2026 — Present</p>
+                  <h3 className="font-bold text-2xl text-brand-primary dark:text-dark-primary mb-1 transition-colors duration-500">Full Stack Developer / RPA Developer</h3>
+                  <p className="text-brand-primary dark:text-dark-primary font-medium mb-6 transition-colors duration-500">Fragomen</p>
                    <ul className="space-y-3 text-brand-accent dark:text-dark-accent text-base font-light leading-relaxed list-disc list-inside marker:text-brand-secondary/50 dark:marker:text-dark-secondary/70 transition-colors duration-500">
-                    <li>Conducted survey analytics on consumer research datasets to extract actionable insights on product preferences, flavor trends, and category performance.</li>
-                    <li>Supported end-to-end survey analytics projects, handling data cleaning, preprocessing, analysis.</li>
-                    <li>Performed statistical analysis and multivariate techniques (including PLSR, PCA, and Ideal Profiling) in R and Python to identify key drivers of liking and purchase intent, comparing results across tools for robustness.</li>
-                    <li>Built predictive models and Random Forest analyses to support business decision-making and highlight influential factors in consumer behavior.</li>
-                    <li>Automated survey data workflows, including preprocessing, cleaning, and structuring of numeric and free-text responses, improving efficiency and data reliability.</li>
-                    <li>Applied advanced Excel skills to handle large-scale datasets, including formulas, pivot tables, and validation checks for accurate reporting.</li>
-                    <li>Created charts and visualizations in Power BI, including scatter plots and PCA coordinate plots, to communicate survey trends and insights effectively.</li>
-                    <li>Utilized SPSS for additional statistical analysis and hypothesis testing as needed for survey data.</li>
+                    <li>Developed the Nitaqat Saudization Compliance Portal, a full-stack web application for tracking Saudi Arabian HR localization compliance, using React, TypeScript (Vite), Python FastAPI, and PostgreSQL (Neon).</li>
+                    <li>Built a profession-based Saudization tracker covering 14 profession categories and 5 nationality-based quota restrictions, including a Nationality Tracker module providing complete nationality-wise headcount breakdowns and visualizations.</li>
+                    <li>Implemented a two-way predictive compliance simulator allowing users to calculate permissible expat hiring based on Saudi national additions and vice versa, aligned with official MHRSD and Qiwa Nitaqat thresholds.</li>
+                    <li>Designed role-based access control (SuperAdmin, Admin, HR Manager) with JWT authentication, bcrypt password hashing, 90-day password expiration, and full audit logging of user activity.</li>
+                    <li>Engineered the backend compliance engine in Python, migrating from SQLite to PostgreSQL and fixing critical Saudization formula logic, including GCC national, Ajeer worker, and special-case headcount handling.</li>
                   </ul>
                 </div>
               </motion.div>
@@ -378,30 +375,46 @@ export default function App() {
                 </div>
                 
                 <div className="w-full glass-card p-8 group-hover:border-brand-secondary/30 dark:group-hover:border-dark-secondary/50 transition-colors">
-                   <p className="text-brand-secondary dark:text-dark-secondary font-mono text-base mb-2 transition-colors duration-500">Jan 2025 — Mar 2025</p>
-                  <h3 className="font-bold text-2xl text-brand-primary dark:text-dark-primary mb-1 transition-colors duration-500">Data Science Intern</h3>
-                  <p className="text-brand-primary dark:text-dark-primary font-medium mb-6 transition-colors duration-500">VentureDive</p>
+                   <p className="text-brand-secondary dark:text-dark-secondary font-mono text-base mb-2 transition-colors duration-500">Oct 2024 — Jan 2026</p>
+                  <h3 className="font-bold text-2xl text-brand-primary dark:text-dark-primary mb-1 transition-colors duration-500">RPA Developer</h3>
+                  <p className="text-brand-primary dark:text-dark-primary font-medium mb-6 transition-colors duration-500">Sybros Tech</p>
                   
                   <div className="mb-4">
-                    <h4 className="text-brand-primary dark:text-dark-primary text-sm font-semibold mb-2 flex items-center gap-2 transition-colors duration-500"><Sparkles className="w-3 h-3 text-brand-secondary dark:text-dark-secondary"/> FinLLM Project</h4>
+                    <h4 className="text-brand-primary dark:text-dark-primary text-sm font-semibold mb-2 flex items-center gap-2 transition-colors duration-500"><Sparkles className="w-3 h-3 text-brand-secondary dark:text-dark-secondary"/> Enterprise RPA Workflows</h4>
                      <ul className="space-y-2 text-brand-accent dark:text-dark-accent text-base font-light leading-relaxed list-disc list-inside marker:text-brand-secondary/50 dark:marker:text-dark-secondary/70 transition-colors duration-500">
-                      <li>Contributed to the development of a system enabling a language model (LLM) to query tabular CSV data and extract financial insights.</li>
-                      <li>Implemented SQL-like querying using Pandas, allowing comparisons, aggregations, and trend analysis on structured financial datasets.</li>
-                      <li>Designed a dataframe-based query workflow for retrieving financial trends directly from CSV files without vector search.</li>
-                      <li>Ensured outputs included interpretable reasoning, improving transparency and trust in AI-driven insights.</li>
-                      <li>Supported data cleaning, preprocessing, and structuring to ensure accuracy and usability of financial datasets.</li>
+                      <li>Designed, developed, and deployed end-to-end RPA solutions using UiPath, driving efficiency across sales, logistics, and finance operations.</li>
+                      <li>Integrated automations with HubSpot, Unleashed, Shopify, MachShip, and Google Workspace via REST APIs and webhooks for real-time data synchronization.</li>
+                      <li>Automated email-driven workflows with Outlook integration, enabling automatic ticket creation, LLM-based categorization, and CRM updates.</li>
                     </ul>
                   </div>
 
                   <div>
-                    <h4 className="text-brand-primary dark:text-dark-primary text-sm font-semibold mb-2 flex items-center gap-2 transition-colors duration-500"><Sparkles className="w-3 h-3 text-brand-secondary dark:text-dark-secondary"/> Shelf Sight Project</h4>
+                    <h4 className="text-brand-primary dark:text-dark-primary text-sm font-semibold mb-2 flex items-center gap-2 transition-colors duration-500"><Sparkles className="w-3 h-3 text-brand-secondary dark:text-dark-secondary"/> Data Extraction & Reporting</h4>
                      <ul className="space-y-2 text-brand-accent dark:text-dark-accent text-base font-light leading-relaxed list-disc list-inside marker:text-brand-secondary/50 dark:marker:text-dark-secondary/70 transition-colors duration-500">
-                      <li>Contributed to a retail analytics project by supporting the development of a deep learning-based object detection system using RetinaNet.</li>
-                      <li>Prepared and structured 1,200+ labeled images in COCO JSON format, ensuring data quality and consistency for model training.</li>
-                      <li>Assisted in model fine-tuning by adjusting hyperparameters, learning rates, batch sizes, and data augmentation techniques.</li>
-                      <li>Evaluated model performance using standard classification metrics, supporting model validation and comparison across experiments.</li>
+                      <li>Built data extraction and validation bots for websites, portals, and a mobile application interface, feeding structured data into Excel and Google Sheets.</li>
+                      <li>Used VB.NET, Python, and JavaScript for advanced scripting and data manipulation within UiPath workflows.</li>
+                      <li>Ensured reliability through exception handling, error logging, and Orchestrator schedule management, and built Power BI dashboards to track automation KPIs.</li>
                     </ul>
                   </div>
+                </div>
+              </motion.div>
+
+              {/* Job 3 */}
+              <motion.div variants={childVariants} className="relative flex flex-col group pl-16">
+                <div className="absolute left-0 flex items-center justify-center w-12 h-12 rounded-full border-[6px] border-brand-bg dark:border-dark-bg bg-brand-secondary/10 dark:bg-dark-surface text-brand-secondary dark:text-dark-secondary z-10 transition-colors group-hover:bg-brand-secondary dark:group-hover:bg-dark-secondary group-hover:text-white dark:group-hover:text-dark-bg group-hover:shadow-md">
+                  <BrainCircuit className="w-4 h-4" />
+                </div>
+
+                <div className="w-full glass-card p-8 group-hover:border-brand-secondary/30 dark:group-hover:border-dark-secondary/50 transition-colors">
+                   <p className="text-brand-secondary dark:text-dark-secondary font-mono text-base mb-2 transition-colors duration-500">Mar 2023 — Jul 2024</p>
+                  <h3 className="font-bold text-2xl text-brand-primary dark:text-dark-primary mb-1 transition-colors duration-500">Final Year Project</h3>
+                  <p className="text-brand-primary dark:text-dark-primary font-medium mb-6 transition-colors duration-500">University of Central Punjab</p>
+                   <ul className="space-y-3 text-brand-accent dark:text-dark-accent text-base font-light leading-relaxed list-disc list-inside marker:text-brand-secondary/50 dark:marker:text-dark-secondary/70 transition-colors duration-500">
+                    <li>Developed an intelligent virtual assistant to streamline university admissions, leveraging retrieval-augmented generation (RAG) for enhanced, context-based interaction.</li>
+                    <li>Implemented a real-time speech interaction system followed by a search against a vector database to retrieve relevant admissions information.</li>
+                    <li>Integrated generated responses with Nvidia Audio2Face to power a lifelike 3D avatar for an immersive conversational experience.</li>
+                    <li>Built using HTML, CSS, and Bootstrap for the frontend, Flask for the backend, and Mistral 7B as the underlying language model.</li>
+                  </ul>
                 </div>
               </motion.div>
 
@@ -543,19 +556,19 @@ export default function App() {
               <span className="text-brand-secondary dark:text-dark-secondary font-mono text-sm tracking-wider mb-6 block transition-colors duration-500">05. What's Next?</span>
               <h2 className="text-4xl md:text-6xl font-bold text-brand-primary dark:text-dark-primary tracking-tight mb-6 transition-colors duration-500">Ready to innovate?</h2>
               <p className="text-brand-accent dark:text-dark-accent mb-12 text-lg md:text-xl font-light max-w-xl mx-auto transition-colors duration-500">
-                I'm actively seeking new opportunities in Data Science and AI Engineering. Let's discuss how my analytical expertise can drive impact for your team.
+                I'm actively seeking new opportunities in RPA, automation engineering, and full-stack development. Let's discuss how my experience can drive impact for your team.
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <a 
-                  href="mailto:ehab.sikandar@yahoo.com" 
+                  href="mailto:hamzabinnkashif@gmail.com" 
                   className="group flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-brand-secondary dark:bg-dark-secondary text-white dark:text-dark-bg font-medium transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.98]"
                 >
                   <Mail className="w-5 h-5" />
                   <span>Send an Email</span>
                 </a>
                 <a 
-                  href="https://www.linkedin.com/in/muhammad-ehab-sikandar" 
+                  href="https://www.linkedin.com/in/hamzabinkashif/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="group flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-white dark:bg-dark-surface border border-brand-primary/10 dark:border-dark-highlight/20 text-brand-primary dark:text-dark-primary font-medium transition-all shadow-sm hover:shadow-md hover:border-brand-primary/20 dark:hover:border-dark-highlight/40 hover:-translate-y-0.5 active:scale-[0.98]"
@@ -571,7 +584,7 @@ export default function App() {
         {/* FOOTER */}
         <footer className="py-10 text-center border-t border-brand-primary/10 dark:border-dark-highlight/10 bg-white dark:bg-dark-bg transition-colors duration-500">
           <p className="text-brand-accent dark:text-dark-accent text-sm font-mono tracking-wider transition-colors duration-500">
-            Designed & Engineered by <span className="text-brand-primary dark:text-dark-primary font-medium transition-colors duration-500">Muhammad Ehab Sikandar</span>
+            Designed & Engineered by <span className="text-brand-primary dark:text-dark-primary font-medium transition-colors duration-500">Hamza Bin Kashif</span>
           </p>
         </footer>
 
@@ -614,12 +627,12 @@ export default function App() {
               {/* PDF Viewer */}
               <div className="flex-1 w-full bg-gray-100 dark:bg-dark-bg overflow-hidden relative">
                 <object
-                  data="/Ehab's Resume.pdf#toolbar=0&navpanes=0&view=FitH"
+                  data="/Hamza Bin Kashif Resume.pdf#toolbar=0&navpanes=0&view=FitH"
                   type="application/pdf"
                   className="w-full h-full border-none"
                 >
                   <iframe
-                    src="/Ehab's Resume.pdf#toolbar=0&navpanes=0&view=FitH"
+                    src="/Hamza Bin Kashif Resume.pdf#toolbar=0&navpanes=0&view=FitH"
                     className="w-full h-full border-none"
                     title="Resume PDF"
                   />
@@ -628,8 +641,8 @@ export default function App() {
                 {/* Download Button - Bottom Right */}
                 <div className="absolute bottom-6 right-8">
                   <a
-                    href="/Ehab's Resume.pdf"
-                    download="Muhammad Ehab Sikandar Resume.pdf"
+                    href="/Hamza Bin Kashif Resume.pdf"
+                    download="Hamza Bin Kashif Resume.pdf"
                     className="flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-secondary dark:bg-dark-secondary text-white dark:text-dark-bg shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95 transition-all group"
                   >
                     <Download className="w-5 h-5" />
