@@ -724,12 +724,12 @@ export default function App() {
               {/* PDF Viewer */}
               <div className="flex-1 w-full bg-gray-100 dark:bg-dark-bg overflow-hidden relative">
                 <object
-                  data="/Hamza Bin Kashif Resume.pdf#toolbar=0&navpanes=0&view=FitH"
+                  data="/Hamza_Bin_Kashif_Resume.pdf#toolbar=0&navpanes=0&view=FitH"
                   type="application/pdf"
                   className="w-full h-full border-none"
                 >
                   <iframe
-                    src="/Hamza Bin Kashif Resume.pdf#toolbar=0&navpanes=0&view=FitH"
+                    src="/Hamza_Bin_Kashif_Resume.pdf#toolbar=0&navpanes=0&view=FitH"
                     className="w-full h-full border-none"
                     title="Resume PDF"
                   />
@@ -738,8 +738,8 @@ export default function App() {
                 {/* Download Button - Bottom Right */}
                 <div className="absolute bottom-6 right-8">
                   <a
-                    href="/Hamza Bin Kashif Resume.pdf"
-                    download="Hamza Bin Kashif Resume.pdf"
+                    href="/Hamza_Bin_Kashif_Resume.pdf"
+                    download="Hamza_Bin_Kashif_Resume.pdf"
                     className="flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-secondary dark:bg-dark-secondary text-white dark:text-dark-bg shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95 transition-all group"
                   >
                     <Download className="w-5 h-5" />
