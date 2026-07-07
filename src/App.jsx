@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import heroImage from "./assets/hero.jpg";
 /* eslint-disable-next-line no-unused-vars */
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, ChevronDown, Terminal, Database, BrainCircuit, ExternalLink, ArrowRight, Code2, LineChart, Sparkles, Package, Monitor, Briefcase, Sun, Moon, Download, Eye, X } from "lucide-react";
@@ -122,6 +123,7 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [showResume, setShowResume] = useState(false);
+  const [cursorOffset, setCursorOffset] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     if (isDarkMode) {
@@ -151,6 +153,24 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    const handlePointerMove = (event) => {
+      const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+      const clientY = event.touches ? event.touches[0].clientY : event.clientY;
+      const x = (clientX / window.innerWidth - 0.5) * 32;
+      const y = (clientY / window.innerHeight - 0.5) * 32;
+      setCursorOffset({ x, y });
+    };
+
+    window.addEventListener('mousemove', handlePointerMove);
+    window.addEventListener('touchmove', handlePointerMove, { passive: true });
+
+    return () => {
+      window.removeEventListener('mousemove', handlePointerMove);
+      window.removeEventListener('touchmove', handlePointerMove);
+    };
+  }, []);
+
+  useEffect(() => {
     if (showResume) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -176,6 +196,8 @@ export default function App() {
         animate={{ 
           scale: [1, 1.2, 1],
           opacity: [0.1, 0.2, 0.1],
+          x: cursorOffset.x * 0.45,
+          y: cursorOffset.y * 0.45,
         }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className={`fixed top-0 left-1/4 w-[800px] h-[800px] bg-brand-secondary/30 dark:bg-dark-secondary/20 blur-[150px] rounded-full pointer-events-none z-0 transition-all duration-700 ${showResume ? 'opacity-0 scale-90' : 'opacity-100'}`} 
@@ -184,13 +206,15 @@ export default function App() {
         animate={{ 
           scale: [1, 1.1, 1],
           opacity: [0.1, 0.15, 0.1],
+          x: cursorOffset.x * -0.35,
+          y: cursorOffset.y * -0.35,
         }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         className={`fixed bottom-0 right-1/4 w-[600px] h-[600px] bg-brand-primary/20 dark:bg-dark-primary/10 blur-[150px] rounded-full pointer-events-none z-0 transition-all duration-700 ${showResume ? 'opacity-0 scale-90' : 'opacity-100'}`} 
       />
 
       {/* NAVBAR */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${showResume ? 'opacity-0 pointer-events-none' : scrolled ? 'bg-white/80 dark:bg-dark-surface/80 backdrop-blur-xl border-b border-brand-primary/10 dark:border-dark-highlight/10 shadow-sm' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${showResume ? 'opacity-0 pointer-events-none' : scrolled ? 'bg-white/80 dark:bg-dark-card/80 backdrop-blur-xl border-b border-brand-primary/10 dark:border-dark-border/10 shadow-sm' : 'bg-transparent py-6'}`}>
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
           <button onClick={() => scrollTo("home")} className="font-semibold text-xl tracking-tighter flex items-center gap-2 group">
             <Terminal className="w-5 h-5 text-brand-secondary dark:text-dark-secondary group-hover:text-brand-primary dark:group-hover:text-dark-primary transition-colors" />
@@ -198,7 +222,7 @@ export default function App() {
           </button>
 
           <div className="flex items-center gap-4">
-            <div className="hidden md:flex gap-1 bg-white dark:bg-dark-bg border border-brand-primary/10 dark:border-dark-highlight/20 shadow-sm rounded-full px-2 py-1 backdrop-blur-md transition-colors duration-500">
+            <div className="hidden md:flex gap-1 bg-white/10 dark:bg-dark-card/80 border border-brand-primary/10 dark:border-dark-border/20 shadow-sm rounded-full px-2 py-1 backdrop-blur-md transition-colors duration-500">
               {navLinks.map((item) => {
                 const id = item.toLowerCase();
                 const isActive = activeSection === id;
@@ -223,7 +247,7 @@ export default function App() {
             
             <button 
               onClick={() => setIsDarkMode(!isDarkMode)}
-              className="p-2 rounded-full bg-white dark:bg-dark-surface border border-brand-primary/10 dark:border-dark-highlight/20 text-brand-accent dark:text-dark-accent hover:text-brand-secondary dark:hover:text-dark-secondary transition-colors duration-500 shadow-sm"
+              className="p-2 rounded-full bg-white/10 dark:bg-dark-card/80 border border-brand-primary/10 dark:border-dark-border/20 text-brand-accent dark:text-dark-accent hover:text-brand-secondary dark:hover:text-dark-secondary transition-colors duration-500 shadow-sm"
               aria-label="Toggle Dark Mode"
             >
               {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -232,16 +256,16 @@ export default function App() {
             <div className="relative group">
               <button 
                 onClick={() => setShowResume(true)}
-                className="p-2 rounded-full bg-white dark:bg-dark-surface border border-brand-primary/10 dark:border-dark-highlight/20 text-brand-accent dark:text-dark-accent hover:text-brand-secondary dark:hover:text-dark-secondary transition-colors duration-500 shadow-sm flex items-center justify-center"
+                className="p-2 rounded-full bg-white/10 dark:bg-dark-card/80 border border-brand-primary/10 dark:border-dark-border/20 text-brand-accent dark:text-dark-accent hover:text-brand-secondary dark:hover:text-dark-secondary transition-colors duration-500 shadow-sm flex items-center justify-center"
                 aria-label="View Resume"
               >
                 <Eye className="w-5 h-5" />
               </button>
               
               {/* Tooltip */}
-              <div className="absolute top-full right-0 mt-2 px-3 py-1 bg-brand-primary dark:bg-dark-surface text-white dark:text-dark-secondary text-xs font-medium rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-lg border border-brand-primary/10 dark:border-dark-highlight/20">
+              <div className="absolute top-full right-0 mt-2 px-3 py-1 bg-brand-primary dark:bg-dark-card text-white dark:text-dark-secondary text-xs font-medium rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-lg border border-brand-primary/10 dark:border-dark-border/20">
                 view resume
-                <div className="absolute -top-1 right-3 w-2 h-2 bg-brand-primary dark:bg-dark-surface rotate-45 border-l border-t border-brand-primary/10 dark:border-dark-highlight/20" />
+                <div className="absolute -top-1 right-3 w-2 h-2 bg-brand-primary dark:bg-dark-card rotate-45 border-l border-t border-brand-primary/10 dark:border-dark-border/20" />
               </div>
             </div>
           </div>
@@ -252,40 +276,61 @@ export default function App() {
       <main className={`relative z-10 transition-all duration-500 ${showResume ? 'blur-sm grayscale-[0.2] opacity-50' : ''}`}>
         
         {/* HERO */}
-        <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-20">
+        <motion.section
+          id="home"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={sectionVariants}
+          className="min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-20 overflow-hidden"
+        >
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
             className="max-w-4xl mx-auto"
           >
-            <motion.div variants={childVariants} className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-brand-primary/10 dark:border-dark-highlight/20 text-brand-primary dark:text-dark-primary text-sm font-medium shadow-sm transition-colors duration-500">
+            <motion.div variants={childVariants} className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 dark:bg-dark-card/80 border border-brand-primary/10 dark:border-dark-border/20 text-brand-primary dark:text-dark-primary text-sm font-medium shadow-sm transition-colors duration-500">
               <Sparkles className="w-4 h-4 text-brand-secondary dark:text-dark-secondary" />
               <span>Available for new opportunities</span>
             </motion.div>
             
-            <motion.h1 variants={childVariants} className="text-6xl md:text-8xl font-bold mb-6 tracking-tighter leading-[1.1] text-brand-primary dark:text-dark-primary transition-colors duration-500">
-              Hi I'm Hamza Bin Kashif <br className="hidden md:block"/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-secondary to-brand-primary dark:from-dark-secondary dark:to-dark-primary">
-                RPA Developer | Full Stack
-              </span>
-            </motion.h1>
+            <div className="grid gap-14 items-center justify-center text-left lg:grid-cols-[420px_minmax(300px,1fr)] lg:text-left">
+              <motion.div variants={childVariants} className="relative rounded-[36px] overflow-hidden border border-white/10 bg-white/10 shadow-2xl backdrop-blur-xl ring-1 ring-white/10">
+                <img src={heroImage} alt="Hamza Bin Kashif" className="w-full h-full object-cover min-h-[420px]" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-primary/10 opacity-80" />
+              </motion.div>
 
-            <motion.p variants={childVariants} className="text-lg md:text-xl text-brand-accent dark:text-dark-accent max-w-2xl mx-auto mb-10 leading-relaxed font-light transition-colors duration-500">
-              Bridging the gap between repetitive workflows and intelligent systems. I build automation pipelines and full-stack platforms that turn manual processes into reliable, scalable solutions.
-            </motion.p>
+              <div>
+                <motion.h1 variants={childVariants} className="text-5xl md:text-6xl font-extrabold tracking-tight text-brand-primary dark:text-dark-primary leading-tight mb-4">
+                  Hamza Bin Kashif
+                </motion.h1>
+                <motion.p variants={childVariants} className="text-sm uppercase tracking-[0.35em] text-brand-secondary dark:text-dark-secondary mb-8">
+                  Professional RPA & Automation Engineer
+                </motion.p>
+                <motion.p variants={childVariants} className="text-lg md:text-xl text-brand-accent dark:text-dark-accent max-w-2xl mb-8 leading-relaxed">
+                  Automation specialist and RPA engineer focused on turning manual workflows into dependable systems. I build scalable Python-powered automation pipelines, process integrations, and enterprise RPA solutions for modern operations.
+                </motion.p>
 
-            <motion.div variants={childVariants} className="flex flex-wrap justify-center gap-4">
-              <button onClick={() => scrollTo("projects")} className="group relative px-8 py-3.5 rounded-xl bg-brand-primary dark:bg-dark-secondary text-white dark:text-[#101E2C] font-medium overflow-hidden transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.98]">
-                <span className="relative z-10 flex items-center gap-2">
-                  View Case Studies <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-                <div className="absolute inset-0 bg-brand-secondary dark:bg-white opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity" />
-              </button>
-              <button onClick={() => scrollTo("contact")} className="px-8 py-3.5 rounded-xl bg-white dark:bg-dark-surface border border-brand-primary/10 dark:border-dark-highlight/20 text-brand-primary dark:text-dark-primary font-medium transition-all shadow-sm hover:shadow-md hover:border-brand-primary/20 dark:hover:border-dark-highlight/40 active:scale-[0.98]">
-                Get in Touch
-              </button>
-            </motion.div>
+                <motion.div variants={childVariants} className="flex flex-wrap gap-3 mb-10">
+                  {['UiPath', 'Python', 'FastAPI', 'Automation'].map((tag) => (
+                    <span key={tag} className="inline-flex items-center gap-2 rounded-full border border-brand-primary/15 bg-white/10 px-4 py-2 text-sm text-brand-primary dark:text-dark-primary transition-colors duration-500">
+                      {tag}
+                    </span>
+                  ))}
+                </motion.div>
+
+                <motion.div variants={childVariants} className="flex flex-wrap gap-4">
+                  <button onClick={() => scrollTo("projects")} className="inline-flex items-center justify-center gap-2 rounded-3xl bg-brand-primary px-7 py-4 text-base font-semibold text-white shadow-lg shadow-brand-primary/20 transition hover:-translate-y-0.5 hover:bg-brand-secondary">
+                    <ArrowRight className="w-4 h-4" />
+                    View Case Studies
+                  </button>
+                  <button onClick={() => scrollTo("contact")} className="inline-flex items-center justify-center gap-2 rounded-3xl border border-white/15 bg-white/20 px-7 py-4 text-base font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/30">
+                    Contact Me
+                  </button>
+                </motion.div>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div 
@@ -297,13 +342,25 @@ export default function App() {
           >
             <ChevronDown className="w-6 h-6" />
           </motion.div>
-        </section>
+        </motion.section>
 
         {/* SECTION DIVIDER UTILITY */}
         <div className="w-full h-px bg-gradient-to-r from-transparent via-brand-primary/10 dark:via-dark-highlight/20 to-transparent transition-colors duration-500" />
 
         {/* ABOUT */}
-        <section id="about" className="py-32 px-6">
+        <section id="about" className="py-32 px-6 relative overflow-hidden">
+          <motion.div
+            animate={{ x: [0, 16, 0], y: [0, -12, 0], opacity: [0.08, 0.18, 0.08] }}
+            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+            className="pointer-events-none absolute -top-12 right-10 w-40 h-40 rounded-full bg-brand-secondary/15 dark:bg-dark-secondary/15 blur-3xl"
+            aria-hidden="true"
+          />
+          <motion.div
+            animate={{ x: [0, -18, 0], opacity: [0.05, 0.14, 0.05] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="pointer-events-none absolute bottom-8 left-8 w-28 h-28 rounded-full bg-white/10 dark:bg-dark-card/20 blur-3xl"
+            aria-hidden="true"
+          />
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -332,7 +389,19 @@ export default function App() {
         </section>
 
         {/* EXPERIENCE */}
-        <section id="experience" className="py-32 px-6 bg-white/50 dark:bg-dark-surface/30 transition-colors duration-500">
+        <section id="experience" className="py-32 px-6 bg-white/50 dark:bg-dark-card/30 transition-colors duration-500 relative overflow-hidden">
+          <motion.div
+            animate={{ x: [0, -20, 0], y: [0, 10, 0], opacity: [0.08, 0.2, 0.08] }}
+            transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+            className="pointer-events-none absolute top-12 left-10 w-40 h-40 rounded-full bg-brand-primary/10 dark:bg-dark-primary/15 blur-3xl"
+            aria-hidden="true"
+          />
+          <motion.div
+            animate={{ x: [0, 20, 0], opacity: [0.05, 0.16, 0.05] }}
+            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="pointer-events-none absolute bottom-16 right-12 w-28 h-28 rounded-full bg-brand-secondary/10 dark:bg-dark-secondary/15 blur-3xl"
+            aria-hidden="true"
+          />
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -350,7 +419,7 @@ export default function App() {
               
               {/* Job 1 */}
               <motion.div variants={childVariants} className="relative flex flex-col group pl-16">
-                <div className="absolute left-0 flex items-center justify-center w-12 h-12 rounded-full border-[6px] border-brand-bg dark:border-dark-bg bg-brand-secondary/10 dark:bg-dark-surface text-brand-secondary dark:text-dark-secondary z-10 transition-colors group-hover:bg-brand-secondary dark:group-hover:bg-dark-secondary group-hover:text-white dark:group-hover:text-dark-bg group-hover:shadow-md">
+                <div className="absolute left-0 flex items-center justify-center w-12 h-12 rounded-full border-[6px] border-brand-bg dark:border-dark-bg bg-brand-secondary/10 dark:bg-dark-card text-brand-secondary dark:text-dark-secondary z-10 transition-colors group-hover:bg-brand-secondary dark:group-hover:bg-dark-secondary group-hover:text-white dark:group-hover:text-dark-bg group-hover:shadow-md">
                   <Database className="w-4 h-4" />
                 </div>
                 
@@ -370,7 +439,7 @@ export default function App() {
 
               {/* Job 2 */}
               <motion.div variants={childVariants} className="relative flex flex-col group pl-16">
-                <div className="absolute left-0 flex items-center justify-center w-12 h-12 rounded-full border-[6px] border-brand-bg dark:border-dark-bg bg-brand-secondary/10 dark:bg-dark-surface text-brand-secondary dark:text-dark-secondary z-10 transition-colors group-hover:bg-brand-secondary dark:group-hover:bg-dark-secondary group-hover:text-white dark:group-hover:text-dark-bg group-hover:shadow-md">
+                <div className="absolute left-0 flex items-center justify-center w-12 h-12 rounded-full border-[6px] border-brand-bg dark:border-dark-bg bg-brand-secondary/10 dark:bg-dark-card text-brand-secondary dark:text-dark-secondary z-10 transition-colors group-hover:bg-brand-secondary dark:group-hover:bg-dark-secondary group-hover:text-white dark:group-hover:text-dark-bg group-hover:shadow-md">
                   <Terminal className="w-4 h-4" />
                 </div>
                 
@@ -401,7 +470,7 @@ export default function App() {
 
               {/* Job 3 */}
               <motion.div variants={childVariants} className="relative flex flex-col group pl-16">
-                <div className="absolute left-0 flex items-center justify-center w-12 h-12 rounded-full border-[6px] border-brand-bg dark:border-dark-bg bg-brand-secondary/10 dark:bg-dark-surface text-brand-secondary dark:text-dark-secondary z-10 transition-colors group-hover:bg-brand-secondary dark:group-hover:bg-dark-secondary group-hover:text-white dark:group-hover:text-dark-bg group-hover:shadow-md">
+                <div className="absolute left-0 flex items-center justify-center w-12 h-12 rounded-full border-[6px] border-brand-bg dark:border-dark-bg bg-brand-secondary/10 dark:bg-dark-card text-brand-secondary dark:text-dark-secondary z-10 transition-colors group-hover:bg-brand-secondary dark:group-hover:bg-dark-secondary group-hover:text-white dark:group-hover:text-dark-bg group-hover:shadow-md">
                   <BrainCircuit className="w-4 h-4" />
                 </div>
 
@@ -423,7 +492,19 @@ export default function App() {
         </section>
 
         {/* SKILLS */}
-        <section id="skills" className="py-32 px-6">
+        <section id="skills" className="py-32 px-6 relative overflow-hidden">
+          <motion.div
+            animate={{ x: [0, 14, 0], y: [0, -8, 0], opacity: [0.08, 0.18, 0.08] }}
+            transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
+            className="pointer-events-none absolute top-10 right-10 w-36 h-36 rounded-full bg-brand-secondary/15 dark:bg-dark-secondary/15 blur-3xl"
+            aria-hidden="true"
+          />
+          <motion.div
+            animate={{ x: [0, -12, 0], opacity: [0.05, 0.14, 0.05] }}
+            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+            className="pointer-events-none absolute bottom-14 left-10 w-32 h-32 rounded-full bg-white/10 dark:bg-dark-card/20 blur-3xl"
+            aria-hidden="true"
+          />
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -442,10 +523,12 @@ export default function App() {
                 <motion.div 
                   key={group.category}
                   variants={childVariants}
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                   className="glass-card p-8 group hover:border-brand-primary/20 dark:hover:border-dark-highlight/30 transition-colors"
                 >
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 rounded-lg bg-brand-bg dark:bg-dark-bg border border-brand-primary/5 dark:border-dark-highlight/10 transition-colors duration-500">
+                    <div className="p-2 rounded-lg bg-brand-bg dark:bg-dark-card border border-brand-primary/5 dark:border-dark-border/10 transition-colors duration-500">
                       {group.icon}
                     </div>
                     <h3 className="text-brand-primary dark:text-dark-primary font-medium transition-colors duration-500">{group.category}</h3>
@@ -454,7 +537,7 @@ export default function App() {
                     {group.skills.map(skill => (
                       <span 
                         key={skill} 
-                        className="px-3 py-1.5 text-sm font-light text-brand-accent dark:text-dark-accent bg-brand-bg dark:bg-dark-bg border border-brand-primary/5 dark:border-dark-highlight/10 rounded-md transition-colors hover:bg-white dark:hover:bg-dark-secondary hover:text-brand-primary dark:hover:text-dark-bg hover:border-brand-primary/10 dark:hover:border-dark-secondary hover:shadow-sm cursor-default"
+                        className="px-3 py-1.5 text-sm font-light text-brand-accent dark:text-dark-accent bg-brand-bg dark:bg-dark-card border border-brand-primary/5 dark:border-dark-border/10 rounded-md transition-colors hover:bg-white dark:hover:bg-dark-secondary hover:text-brand-primary dark:hover:text-dark-bg hover:border-brand-primary/10 dark:hover:border-dark-secondary hover:shadow-sm cursor-default"
                       >
                         {skill}
                       </span>
@@ -467,7 +550,19 @@ export default function App() {
         </section>
 
         {/* PROJECTS (CASE STUDY) */}
-        <section id="projects" className="py-32 px-6 bg-white/50 dark:bg-dark-surface/30 transition-colors duration-500">
+        <section id="projects" className="py-32 px-6 bg-white/50 dark:bg-dark-card/30 transition-colors duration-500 relative overflow-hidden">
+          <motion.div
+            animate={{ x: [0, 20, 0], y: [0, -10, 0], opacity: [0.08, 0.2, 0.08] }}
+            transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+            className="pointer-events-none absolute top-8 left-10 w-44 h-44 rounded-full bg-brand-primary/10 dark:bg-dark-primary/15 blur-3xl"
+            aria-hidden="true"
+          />
+          <motion.div
+            animate={{ x: [0, -20, 0], opacity: [0.05, 0.14, 0.05] }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="pointer-events-none absolute bottom-12 right-8 w-32 h-32 rounded-full bg-brand-secondary/10 dark:bg-dark-secondary/15 blur-3xl"
+            aria-hidden="true"
+          />
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -477,7 +572,7 @@ export default function App() {
           >
             <div className="flex items-center gap-4 mb-16">
               <span className="text-brand-secondary dark:text-dark-secondary font-mono text-sm tracking-wider transition-colors duration-500">04.</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-brand-primary dark:text-dark-primary tracking-tight transition-colors duration-500">Featured Case Studies</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-primary dark:text-dark-primary tracking-tight transition-colors duration-500">Featured Projects</h2>
               <div className="h-px bg-brand-primary/10 dark:bg-dark-highlight/20 flex-1 ml-4 hidden md:block transition-colors duration-500"></div>
             </div>
 
@@ -486,6 +581,8 @@ export default function App() {
                 <motion.div 
                   key={index}
                   variants={childVariants} 
+                  whileHover={{ y: -8, scale: 1.01 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                   className="glass-card overflow-hidden group"
                 >
                   <div className="p-10 md:p-14 relative">
@@ -505,7 +602,7 @@ export default function App() {
                       </p>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8 mt-12 border-t border-brand-primary/10 dark:border-dark-highlight/10 pt-12 transition-colors duration-500">
+                    <div className="grid md:grid-cols-3 gap-8 mt-12 border-t border-brand-primary/10 dark:border-dark-border/10 pt-12 transition-colors duration-500">
                       <div>
                         <h4 className="text-brand-primary dark:text-dark-primary font-medium mb-3 flex items-center gap-2 transition-colors duration-500"><BrainCircuit className="w-4 h-4 text-brand-accent dark:text-dark-accent"/> The Problem</h4>
                         <p className="text-base text-brand-accent dark:text-dark-accent font-light leading-relaxed transition-colors duration-500">
@@ -571,7 +668,7 @@ export default function App() {
                   href="https://www.linkedin.com/in/hamzabinkashif/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="group flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-white dark:bg-dark-surface border border-brand-primary/10 dark:border-dark-highlight/20 text-brand-primary dark:text-dark-primary font-medium transition-all shadow-sm hover:shadow-md hover:border-brand-primary/20 dark:hover:border-dark-highlight/40 hover:-translate-y-0.5 active:scale-[0.98]"
+                  className="group flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-white dark:bg-dark-card border border-brand-primary/10 dark:border-dark-border/20 text-brand-primary dark:text-dark-primary font-medium transition-all shadow-sm hover:shadow-md hover:border-brand-primary/20 dark:hover:border-dark-highlight/40 hover:-translate-y-0.5 active:scale-[0.98]"
                 >
                   <FaLinkedin className="w-5 h-5 text-brand-secondary dark:text-dark-secondary transition-colors duration-500" />
                   <span>Connect on LinkedIn</span>
@@ -582,7 +679,7 @@ export default function App() {
         </section>
         
         {/* FOOTER */}
-        <footer className="py-10 text-center border-t border-brand-primary/10 dark:border-dark-highlight/10 bg-white dark:bg-dark-bg transition-colors duration-500">
+        <footer className="py-10 text-center border-t border-brand-primary/10 dark:border-dark-border/10 bg-white dark:bg-dark-bg transition-colors duration-500">
           <p className="text-brand-accent dark:text-dark-accent text-sm font-mono tracking-wider transition-colors duration-500">
             Designed & Engineered by <span className="text-brand-primary dark:text-dark-primary font-medium transition-colors duration-500">Hamza Bin Kashif</span>
           </p>
@@ -613,7 +710,7 @@ export default function App() {
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="relative w-full max-w-5xl h-[85vh] md:h-[90vh] bg-white dark:bg-dark-surface rounded-2xl shadow-2xl overflow-hidden border border-brand-primary/10 dark:border-dark-highlight/20 flex flex-col isolation-auto [transform:translateZ(0)]"
+              className="relative w-full max-w-5xl h-[85vh] md:h-[90vh] bg-white dark:bg-dark-card rounded-2xl shadow-2xl overflow-hidden border border-brand-primary/10 dark:border-dark-border/20 flex flex-col isolation-auto [transform:translateZ(0)]"
             >
               {/* Floating Close Button */}
               <button

@@ -14,13 +14,21 @@ export default {
           accent: '#343A40' // Darkened for better readability in light mode
         },
         dark: {
-          bg: '#101E2C',
-          surface: '#1B2B3A',
-          primary: '#E9ECEF',
-          secondary: '#339AF0',
-          accent: '#CED4DA', // Lightened for better readability in dark mode
-          highlight: '#DEE2E6'
-        }
+          bg: '#041521',
+          surface: '#0D2C43',
+          card: '#0D2C43',
+          border: '#0B2237',
+          primary: '#50B5FF',
+          secondary: '#75C5FF',
+          accent: '#E0E7FF',
+          highlight: '#184161'
+        },
+        'dark-card': '#0D2C43',
+        'dark-border': '#0B2237',
+        'dark-primary': '#50B5FF',
+        'dark-secondary': '#75C5FF',
+        'dark-accent': '#E0E7FF',
+        'dark-highlight': '#184161'
       }
     },
   },
